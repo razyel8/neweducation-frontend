@@ -1,0 +1,58 @@
+<h1>
+  Powierzenia
+</h1>
+<label>Semestr</label>
+<select class="ui fluid dropdown" [(ngModel)]="selectedSemestrId" (ngModelChange)="updateSelectedValue()">
+  <option [value]="semestr.id" *ngFor="let semestr of semestrListObs | async">{{semestr.nazwa}}</option>
+</select>
+<div class="ui grid">
+  <div class="eight wide column">
+    <p>Godziny pracy: 500</p>
+  </div>
+  <div class="eight wide column">
+    <p>Niezaplanowanych godz: 0</p>
+  </div>
+</div>
+<table class="ui celled table">
+  <thead>
+  <tr>
+    <th colspan="8">Kursy</th>
+  </tr>
+  <tr>
+    <th>Typ studiów</th>
+    <th>Wydział</th>
+    <th>Kierunek</th>
+    <th>Kurs</th>
+    <th>Forma</th>
+    <th>Sem. nr.</th>
+    <th>Godziny</th>
+    <th>Status</th>
+  </tr>
+  </thead>
+  <tbody>
+  <template ngFor let-powierzenie [ngForOf]="powierzeniaListObs | async">
+    <tr class="clickable" (click)="selectPowierzenie(powierzenie.id)">
+      <td>{{powierzenie.typStudiow}}</td>
+      <td>{{powierzenie.wydzial}}</td>
+      <td>{{powierzenie.kierunek}}</td>
+      <td>{{powierzenie.kurs}}</td>
+      <td>{{powierzenie.forma}}</td>
+      <td>{{powierzenie.nrSem}}</td>
+      <td>{{powierzenie.godziny}}</td>
+      <td>{{printStatus(powierzenie.statusEnum)}}</td>
+    </tr>
+    <tr *ngIf="powierzenie.id === selectedPowierzenieId && powierzenie.statusEnum === 1">
+      <td colspan="8">
+        <div class="">
+          <button class="ui positive button" (click)="acceptPowierzenie(powierzenie)">
+            Akceptuj
+          </button>
+          <button class="ui negative button" (click)="denyPowierzenie(powierzenie)">
+            Odrzuć
+          </button>
+        </div>
+      </td>
+    </tr>
+  </template>
+  </tbody>
+</table>

@@ -1,0 +1,86 @@
+<div class="ui one column grid">
+    <div class="column center aligned">
+        <div class="row">
+            <div class="column logo">
+                <!--<img class="ui fluid image" src="assets/images/fluo_up.jpg">-->
+                <span class="logo">Nowa edukacja</span>
+                <p></p>
+                <img class="ui fluid image" src="assets/images/fluo2.jpg">
+            </div>
+        </div>
+        <div class="row center">
+            <div class="column">
+                <p></p>
+                <img class="ui tiny circular centered image" src="assets/images/dariusz.jpg">
+                <h3>{{user?.imie}} {{user?.nazwisko}}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ui grid">
+    <div class="row">
+        <div class="sixteen wide column">
+            <button class="fluid ui basic button" (click)="logout()">
+                Wyloguj
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column">
+            <div class="ui fluid secondary vertical menu">
+                <a class="item">
+                    <i class="alarm outline icon"></i>
+                    Wiadomości
+                    <div class="ui label">11</div>
+                </a>
+                <a class="item">
+                    Oceny
+                    <i class="checkmark icon"></i>
+                </a>
+                <a class="item">
+                    <i class="newspaper icon"></i>
+                    Dokumenty
+                </a>
+                <!--<a class="item">-->
+                    <!--<i class="dropdown icon"></i>-->
+                    <!--Moje sprawy-->
+                    <!--<div class="menu">-->
+                        <!--<a class="item">-->
+                            <!--<i class="help icon"></i>-->
+                            <!--Sondaże-->
+                        <!--</a>-->
+                        <!--<a class="item">Medium</a>-->
+                        <!--<a class="item">Large</a>-->
+                    <!--</div>-->
+                <!--</a>-->
+                <!--<a class="item">-->
+                    <!--<i class="help icon"></i>-->
+                    <!--Sondaże-->
+                <!--</a>-->
+                <div class="ui dropdown item">
+                    <i class="dropdown icon"></i>
+                    Moje sprawy
+                    <div class="menu">
+                        <div class="header">MOJE SPRAWY</div>
+                        <a class="item" *ngIf="user?.role == 1" routerLink="sondaze">
+                            <i class="help icon"></i>
+                            Sondaże
+                        </a>
+                        <a class="item"><i class="home icon"></i>Inne sprawy</a>
+                    </div>
+                </div>
+                <a class="item" *ngIf="user?.role == 2" routerLink="akceptacja-powierzen">
+                    <i class="pointing right icon"></i>
+                    <!--Dla pracownika-->
+                    Powierzenia
+                </a>
+                <a class="item" *ngIf="user?.role == 3" routerLink="/designation/semester">
+                    <!--Dla pełnomocnika-->
+                    <i class="pointing right icon"></i>
+                    Powierzenia
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,8 @@
+{
+  "id": 1,
+  "imie": "Adam",
+  "nazwisko": "Małysz",
+  "login": "abc",
+  "role": 1,
+  "authToken": "abc123"
+}

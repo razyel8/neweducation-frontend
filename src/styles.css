@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+.selected-row{
+    font-weight: bold;
+    background-color: #FBFDEF;
+}
+
+.clickable:hover{
+    background-color: #FBFDEF;
+    cursor: pointer;
+}
+
+.clickable.disabled:hover{
+    background-color: #FBFDEF;
+    cursor: pointer;
+}
+body{
+    padding-top: 20px;
+}

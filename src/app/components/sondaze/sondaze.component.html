@@ -1,0 +1,51 @@
+<h1>Sondaże</h1>
+<div class="ui segment" *ngFor="let survey of sondazList | async">
+  <div class="ui grid clickable" [class.selected-sondaz]="survey.id === sondazSelectedId">
+    <div class="row" (click)="pokazSondaz(survey.id)">
+      <div class="eight wide column">
+        <h5>{{survey.nazwa}}</h5>
+      </div>
+      <div class="four wide column">
+        <p>Data utw: {{survey.dataUtw | date:"dd.MM.yyyy"}}</p>
+      </div>
+      <div class="four wide column">
+        <p>Status: {{printStatus(survey.statusSondazuEnum)}}</p>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="sondazSelectedId === survey.id">
+      <div class="eight wide column">
+        <p>Data rozp: {{survey.dataRozp | date:"dd.MM.yyyy"}}</p>
+      </div>
+      <div class="eight wide column">
+        <p>Data zak: {{survey.dataZak | date:"dd.MM.yyyy"}}</p>
+      </div>
+      <div class="sixteen wide column">
+        <p></p>
+        <p>Opis: {{survey.opis}}</p>
+      </div>
+      <div class="sixteen wide column">
+        <p></p>
+        <b>Propozycje:</b>
+      </div>
+      <div class="sixteen wide column">
+        <table class="ui basic table">
+          <tbody>
+          <template ngFor let-spacjalnosc [ngForOf]="survey?.specjalnosci">
+            <tr  class="clickable" [class.selected-spec]="spacjalnosc.id === survey.selectedSpecId">
+              <td (click)="selectSpecjalnosc(survey, spacjalnosc)">{{spacjalnosc.nazwa}}</td>
+              <td><i class="file pdf outline icon" data-content="Opis specjalizacji" (click)="showPopup()"></i><a href="{{spacjalnosc.pdfLink}}" target="_blank">Pobierz opis w PDF</a></td>
+            </tr>
+          </template>
+          </tbody>
+        </table>
+      </div>
+      <div class="sixteen wide column">
+        <p></p>
+        <div class="ui right floated primary button pdf" (click)="zamknijSondaz(survey)" *ngIf="survey?.statusSondazuEnum === 1">
+          Wybierz
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

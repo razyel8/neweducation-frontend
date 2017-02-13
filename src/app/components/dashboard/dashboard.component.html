@@ -1,0 +1,20 @@
+<!--<p>Dashboard</p>-->
+<!--<router-outlet></router-outlet>-->
+
+<div class="ui two column grid">
+    <div class="four wide column">
+        <!---->
+        <app-user-panel [user]="user" (userUpdated)="handleLogout($event)"></app-user-panel>
+    </div>
+    <div class="twelve wide column">
+        <router-outlet></router-outlet>
+        <!--<app-designation-acceptation></app-designation-acceptation>-->
+
+        <!--<app-login-panel *ngIf="userService.activeUser?.role !== -1"></app-login-panel>-->
+        <!--<app-survey *ngIf="user?.role === 1"></app-survey>-->
+        <!--<app-designation-details></app-designation-details>-->
+        <!--<app-designation-semester-list></app-designation-semester-list>-->
+        <!--<app-designation></app-designation>-->
+        <!--<app-designation-in-semester></app-designation-in-semester>-->
+    </div>
+</div>
