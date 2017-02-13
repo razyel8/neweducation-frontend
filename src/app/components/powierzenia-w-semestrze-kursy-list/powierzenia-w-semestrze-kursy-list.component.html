@@ -1,0 +1,64 @@
+<h1>Powierzenia</h1>
+<!--<form class="ui form">-->
+  <!--<div class="inline fields">-->
+    <!--<div class="two wide field">-->
+      <!--<label>Semestr:</label>-->
+    <!--</div>-->
+    <!--<div class="fourteen wide field">-->
+      <!--<p>Semestr</p>-->
+      <!--&lt;!&ndash;<select class="ui fluid dropdown">&ndash;&gt;-->
+        <!--&lt;!&ndash;<option value="">Opcja1</option>&ndash;&gt;-->
+        <!--&lt;!&ndash;<option value="AL">Opcja2</option>&ndash;&gt;-->
+      <!--&lt;!&ndash;</select>&ndash;&gt;-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="inline fields">-->
+    <!--<div class="two wide field">-->
+      <!--<label>Wydział:</label>-->
+    <!--</div>-->
+    <!--<div class="fourteen wide field">-->
+      <!--<p>Wydział</p>-->
+      <!--&lt;!&ndash;<select class="ui fluid dropdown">&ndash;&gt;-->
+        <!--&lt;!&ndash;<option value="">Opcja1</option>&ndash;&gt;-->
+        <!--&lt;!&ndash;<option value="AL">Opcja2</option>&ndash;&gt;-->
+      <!--&lt;!&ndash;</select>&ndash;&gt;-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="inline fields">-->
+    <!--<div class="two wide field">-->
+      <!--<label>Kierunek:</label>-->
+    <!--</div>-->
+    <!--<div class="fourteen wide field">-->
+      <!--<p>Kierunek</p>-->
+      <!--&lt;!&ndash;<select class="ui fluid dropdown">&ndash;&gt;-->
+        <!--&lt;!&ndash;<option value="">Opcja1</option>&ndash;&gt;-->
+        <!--&lt;!&ndash;<option value="AL">Opcja2</option>&ndash;&gt;-->
+      <!--&lt;!&ndash;</select>&ndash;&gt;-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</form>-->
+<h3>Kursy</h3>
+<table class="ui celled table">
+  <thead>
+  <tr>
+    <th>Typ studiów</th>
+    <th>Kurs</th>
+    <th>Forma</th>
+    <!--<th>Sem. nr</th>-->
+    <th>Zapotrzebowanie</th>
+    <th>Przydzielono</th>
+  </tr>
+  </thead>
+  <tbody>
+  <template ngFor let-kurs [ngForOf]="kursyListObs | async">
+    <tr class="clickable" (click)="selectKurs(kurs)">
+      <td>{{kurs.typStudiow}}</td>
+      <td>{{kurs.kurs}}</td>
+      <td>{{kurs.forma}}</td>
+      <!--<td>{{kurs.nrSemestru}}</td>-->
+      <td>{{kurs.zapotrzebowanie}}</td>
+      <td>{{kurs.przydzielono}}</td>
+    </tr>
+  </template>
+  </tbody>
+</table>

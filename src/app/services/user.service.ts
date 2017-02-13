@@ -14,10 +14,10 @@ export class UserService {
 
   constructor(private http: Http, public appRef: ApplicationRef, private router: Router) {
     //For design only:
-    this.activeUser = new User();
-    this.activeUser.imie = "Damian";
-    this.activeUser.nazwisko = "Test"
-    this.activeUser.role = 2;
+    // this.activeUser = new User();
+    // this.activeUser.imie = "Damian";
+    // this.activeUser.nazwisko = "Test"
+    // this.activeUser.role = 3;
   }
 
   login(user: string, pass: string): Promise<User>{

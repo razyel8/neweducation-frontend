@@ -1,0 +1,129 @@
+<h1>
+    Powierzenia
+</h1>
+
+<!--<p *ngFor="let obs of queryObservable | async">-->
+<!--{{obs.nazwa}}-->
+
+<!--</p>-->
+
+<div class="ui two column grid">
+    <div class="column">
+        <p>Typ studiów: {{(kursObs | async)?.typStudiow}}</p>
+        <p>Nazwa kursu: {{(kursObs | async)?.kurs}}</p>
+        <p>Forma: {{(kursObs | async)?.forma}}</p>
+    </div>
+    <div class="column">
+        <p>Zapotrzebowanie: {{(kursObs | async)?.zapotrzebowanie}}</p>
+        <p>Przydzielono: {{(kursObs | async)?.przydzielono}}</p>
+    </div>
+</div>
+
+
+<!--<h3>IIst. Stacj. Projektowanie sys Informatycznych,</h3>-->
+<!--<h3>W, Sem2, Zapotrzebowanie: 100, Przydzielono: 60</h3>-->
+<table class="ui celled table">
+    <thead>
+    <tr>
+        <th colspan="4">
+            <b>Zaplanowane</b>
+        </th>
+    </tr>
+    <tr>
+        <th>Prowadzący</th>
+        <th>L. godzin</th>
+        <th>Status</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <template ngFor let-zaplanowane [ngForOf]="(kursObs | async)?.zaplanowanePowierzenia">
+        <tr *ngIf="!zaplanowane.isDeleted">
+            <td>{{(getProwadzacy(zaplanowane.prowadzacyId) | async)?.nazwa}}</td>
+            <td>{{zaplanowane.liczbaGodzin}}</td>
+            <td>{{printStatus(zaplanowane.status)}}</td>
+            <td>
+                <button class="ui button" (click)="edytujPowierzenie(zaplanowane)">
+                    <i class="edit icon"></i>
+                    Edytuj
+                </button>
+                <button class="ui button" (click)="usunPowierzenie(zaplanowane)">
+                    <i class="trash icon"></i>
+                    Usuń
+                </button>
+            </td>
+        </tr>
+    </template>
+    </tbody>
+</table>
+<button class="ui positive button" (click)="dodajPowierzenie()">
+    <i class="plus icon"></i>
+    Dodaj nowe
+</button>
+<table class="ui celled table">
+    <thead>
+    <tr>
+        <th colspan="4">
+            <b>Planowani prowadzący</b>
+        </th>
+    </tr>
+    <tr>
+        <th>Prowadzący</th>
+        <th>Godziny pracy</th>
+        <th>Niezaplanowanych godz.</th>
+        <th>Powierzenie godz.</th>
+    </tr>
+    </thead>
+    <tbody>
+    <template ngFor let-prowadzacy [ngForOf]="prowadzacyObs | async">
+        <tr *ngIf="czyProponowany(prowadzacy, (kursObs | async))">
+            <td>{{prowadzacy.nazwa}}</td>
+            <td>{{prowadzacy.godzinyPracy}}</td>
+            <td>{{prowadzacy.niezaplanowanychGodzin}}</td>
+            <td>liczba godzin</td>
+        </tr>
+    </template>
+    </tbody>
+</table>
+
+<table class="ui celled table">
+    <thead>
+    <tr>
+        <th colspan="4">
+            <b>Pozostali prowadzący</b>
+        </th>
+    </tr>
+
+    <tr>
+        <th>Prowadzący</th>
+        <th>Godziny pracy</th>
+        <th>Niezaplanowanych godz.</th>
+        <th>Powierzenie godz.</th>
+    </tr>
+    </thead>
+    <tbody>
+    <template ngFor let-prowadzacy [ngForOf]="prowadzacyObs | async">
+        <tr *ngIf="czyPozostaly(prowadzacy, (kursObs | async))">
+            <td>{{prowadzacy.nazwa}}</td>
+            <td>{{prowadzacy.godzinyPracy}}</td>
+            <td>{{prowadzacy.niezaplanowanychGodzin}}</td>
+            <td>liczba godzin</td>
+        </tr>
+    </template>
+    </tbody>
+</table>
+
+
+<!--<button class="ui positive button">-->
+    <!--Zatwierdź-->
+<!--</button>-->
+
+<div class="ui modal edit">
+    <!--<app-powierzenie-dodaj [kurs]="kursObs" [prowadzacy]="prowadzacyObs" (dodanoPowierzenie)="dodanoPowierzenie"></app-powierzenie-dodaj>-->
+    <app-powierzenie-edytuj [kurs]="kursObs" [prowadzacy]="prowadzacyObs" [powierzenie]="editZaplanowanePowierzenie" [powierzenieId]="editZaplanowanePowierzenieId"></app-powierzenie-edytuj>
+</div>
+
+<div class="ui modal add">
+    <app-powierzenie-dodaj [kurs]="kursObs" [prowadzacy]="prowadzacyObs" (dodanoPowierzenie)="dodanoPowierzenie"></app-powierzenie-dodaj>
+    <!--<app-powierzenie-edytuj [kurs]="kursObs" [powiezenie]="prowadzacyObs"></app-powierzenie-edytuj>-->
+</div>

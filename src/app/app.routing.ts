@@ -5,6 +5,9 @@ import {SondazeComponent} from "./components/sondaze/sondaze.component";
 import {AppComponent} from "./app.component";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {AkceptacjaPowierzenComponent} from "./components/akceptacja-powierzen/akceptacja-powierzen.component";
+import {PowierzeniaWSemestrzeListComponent} from "./components/powierzenia-w-semestrze-list/powierzenia-w-semestrze-list.component";
+import {PowierzeniaWSemestrzeKursyListComponent} from "./components/powierzenia-w-semestrze-kursy-list/powierzenia-w-semestrze-kursy-list.component";
+import {PowierzeniaWSemestrzeKursComponent} from "./components/powierzenia-w-semestrze-kurs/powierzenia-w-semestrze-kurs.component";
 
 const appRoutes: Routes = [
     {
@@ -26,6 +29,9 @@ const appRoutes: Routes = [
             {path: '', component: WelcomeComponent},
             {path: 'sondaze', component: SondazeComponent},
             {path: 'akceptacja-powierzen', component: AkceptacjaPowierzenComponent},
+            {path: 'powierzenia-w-semestrze', component: PowierzeniaWSemestrzeListComponent},
+            {path: 'powierzenia-w-semestrze/semestr/:semestrId/wydzial/:wydzialId/kierunek/:kierunekId', component: PowierzeniaWSemestrzeKursyListComponent},
+            {path: 'powierzenia-w-semestrze/semestr/:semestrId/wydzial/:wydzialId/kierunek/:kierunekId/kurs/:kursId', component: PowierzeniaWSemestrzeKursComponent},
         ]
     },
 

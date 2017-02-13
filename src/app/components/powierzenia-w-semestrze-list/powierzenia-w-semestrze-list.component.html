@@ -1,0 +1,44 @@
+<h1>Powierzenia</h1>
+<div class="ui segment" *ngFor="let powierzenie of powierzeniaListObs | async">
+  <div class="ui grid">
+    <div class="row">
+      <div class="four wide column">
+        {{powierzenie.semestr}}
+      </div>
+      <div class="four wide column">
+        {{powierzenie.wydzial}}, {{powierzenie.kierunek}}
+      </div>
+      <div class="four wide column">
+        Data utw. {{powierzenie.dataUtworzenia | date:"dd.MM.yyyy"}}
+      </div>
+      <div class="four wide column">
+        Status: {{printStatus(powierzenie.statusPowierzenWSemestrze)}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="five wide column">
+        Data przesłania do akc.:{{powierzenie.dataPrzeslania | date:"dd.MM.yyyy"}}
+      </div>
+      <div class="five wide column">
+        Data akceptacji: {{powierzenie.dataAkceptacji | date:"dd.MM.yyyy"}}
+      </div>
+      <div class="five wide column">
+        Status akceptacji: {{powierzenie.postepAkceptacji}}
+      </div>
+    </div>
+    <div class="row" *ngIf="powierzenie.statusPowierzenWSemestrze === statusPowierzen?.WersjaRobocza">
+      <div class="sixteen wide column">
+        <div class="ui divider"></div>
+        <a href="#"><i class="edit icon"></i> Edytuj</a>
+        <a href="#"><i class="trash outline icon"></i> Usuń</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="sixteen wide column" *ngIf="powierzenie.statusPowierzenWSemestrze === statusPowierzen?.Zaakceptowane">
+        <div class="ui divider"></div>
+        <a routerLink="semestr/{{powierzenie.idSemestru}}/wydzial/{{powierzenie.idWydzialu}}/kierunek/{{powierzenie.idKierunku}}"><i class="find icon"></i> Przeglądaj powierzenia</a>
+        <a href="/assets/sample.pdf" target="_blank"><i class="file pdf outline icon"></i>  Generuj raport</a>
+      </div>
+    </div>
+  </div>
+</div>

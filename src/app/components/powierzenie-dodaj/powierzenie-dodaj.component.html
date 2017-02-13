@@ -1,0 +1,41 @@
+<div class="ui segment">
+    <div class="container">
+        <div class="ui grid">
+            <div class="row">
+
+
+                <div class="sixteen wide column">
+                    <h3 class="header">Nowe powierzenie</h3>
+                    <p></p>
+                    <p>Kurs: {{(kurs | async)?.kurs}}</p>
+                    <div class="ui divider"></div>
+                    <p></p>
+                    <div class="two wide field">
+                        <label>Prowadzacy</label>
+                    </div>
+                    <div class="fourteen wide field">
+                        <select class="ui fluid dropdown" [(ngModel)]="selectedProwadzacyId" (change)="printSelected()">
+                            <template ngFor let-prow [ngForOf]="prowadzacy | async">
+                            <option [value]="prow.id">{{prow.nazwa}}</option>
+                            </template>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>Liczba godzin</label>
+                        <input type="number" name="liczbaGodzin" placeholder="0" [(ngModel)]="liczbaGodzin">
+                    </div>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="actions">
+    <div class="ui black deny button">
+        Anuluj
+    </div>
+    <div class="ui positive button" (click)="dodajPowierzenie()">
+        Dodaj
+    </div>
+    </div>
+</div>

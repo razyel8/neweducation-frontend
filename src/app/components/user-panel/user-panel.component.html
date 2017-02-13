@@ -62,19 +62,19 @@
                     Moje sprawy
                     <div class="menu">
                         <div class="header">MOJE SPRAWY</div>
-                        <a class="item" *ngIf="user?.role == 1" routerLink="sondaze">
+                        <a class="item" *ngIf="user?.role == 1" routerLink="sondaze"  routerLinkActive="active">
                             <i class="help icon"></i>
                             Sondaże
                         </a>
                         <a class="item"><i class="home icon"></i>Inne sprawy</a>
                     </div>
                 </div>
-                <a class="item" *ngIf="user?.role == 2" routerLink="akceptacja-powierzen">
+                <a class="item" *ngIf="user?.role == 2" routerLink="akceptacja-powierzen"  routerLinkActive="active">
                     <i class="pointing right icon"></i>
                     <!--Dla pracownika-->
                     Powierzenia
                 </a>
-                <a class="item" *ngIf="user?.role == 3" routerLink="/designation/semester">
+                <a class="item" *ngIf="user?.role == 3" routerLink="powierzenia-w-semestrze"  routerLinkActive="active">
                     <!--Dla pełnomocnika-->
                     <i class="pointing right icon"></i>
                     Powierzenia

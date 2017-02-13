@@ -13,7 +13,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SondazeComponent } from './components/sondaze/sondaze.component';
 import { AkceptacjaPowierzenComponent } from './components/akceptacja-powierzen/akceptacja-powierzen.component';
 import {AngularFireModule} from "angularfire2";
-
+import { PowierzeniaWSemestrzeListComponent } from './components/powierzenia-w-semestrze-list/powierzenia-w-semestrze-list.component';
+import { PowierzeniaWSemestrzeKursyListComponent } from './components/powierzenia-w-semestrze-kursy-list/powierzenia-w-semestrze-kursy-list.component';
+import { PowierzeniaWSemestrzeKursComponent } from './components/powierzenia-w-semestrze-kurs/powierzenia-w-semestrze-kurs.component';
+import { PowierzenieDodajComponent } from './components/powierzenie-dodaj/powierzenie-dodaj.component';
+import { PowierzenieEdytujComponent } from './components/powierzenie-edytuj/powierzenie-edytuj.component';
 
 // Must export the config
 export const firebaseConfig = {
@@ -33,7 +37,12 @@ export const firebaseConfig = {
     TestComponent,
     DashboardComponent,
     SondazeComponent,
-    AkceptacjaPowierzenComponent
+    AkceptacjaPowierzenComponent,
+    PowierzeniaWSemestrzeListComponent,
+    PowierzeniaWSemestrzeKursyListComponent,
+    PowierzeniaWSemestrzeKursComponent,
+    PowierzenieDodajComponent,
+    PowierzenieEdytujComponent
   ],
   imports: [
     BrowserModule,
